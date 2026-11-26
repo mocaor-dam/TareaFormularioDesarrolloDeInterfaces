@@ -8,6 +8,9 @@ class DetailsJobScreen extends StatefulWidget {
 
 class DetailsInfoScreen extends State<DetailsJobScreen> {
   bool _isRemote = false;
+  bool _flutter = false;
+  bool _android = false;
+  bool _ios = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,13 @@ class DetailsInfoScreen extends State<DetailsJobScreen> {
             const Divider(),
             
             Center(child: Text("Coding experience in")),
-
+            CheckboxListTile(
+                title: Text("Flutter"),
+                value: _flutter, onChanged: (value){
+              setState(() {
+                _flutter = value!;
+              });
+            })
           ],
         ),
       ),
