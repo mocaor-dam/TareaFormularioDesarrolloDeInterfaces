@@ -40,6 +40,9 @@ class DetailsInfoScreen extends State<DetailsJobScreen> {
               },
             ),
             const Divider(),
+            
+            Center(child: Text("Coding experience in")),
+
           ],
         ),
       ),
