@@ -27,7 +27,10 @@ class _HomeScreenState extends State<HomeMenuScreen>{
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 100.0, right: 100.0),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * (MediaQuery.of(context).size.width > 600 ? 0.20 : 0.10),
+
+                    ),
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: "Username"
@@ -36,7 +39,10 @@ class _HomeScreenState extends State<HomeMenuScreen>{
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 100.0, right: 100.0),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * (MediaQuery.of(context).size.width > 600 ? 0.20 : 0.10),
+
+                    ),
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: "Password"
@@ -44,6 +50,7 @@ class _HomeScreenState extends State<HomeMenuScreen>{
 
                     ),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(onPressed: () =>
