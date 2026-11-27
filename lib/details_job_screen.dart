@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:formulario/data/details.dart';
+import 'package:formulario/detail_screen.dart';
 
 class DetailsJobScreen extends StatefulWidget {
   @override
@@ -12,7 +14,9 @@ class DetailsInfoScreen extends State<DetailsJobScreen> {
   bool _android = false;
   bool _ios = false;
 
-  RangeValues _currentRangeValues =  RangeValues(40, 80);
+  var _contText;
+
+  RangeValues _currentRangeValues = RangeValues(40, 80);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +37,15 @@ class DetailsInfoScreen extends State<DetailsJobScreen> {
                 labelText: "Job Title",
                 hintText: "Job Title",
               ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Este campo es obligatorio";
+                } else {
+                  setState(() {
+                    value = _contText;
+                  });
+                }
+              },
             ),
             SwitchListTile(
               title: Text("Remote"),
@@ -91,11 +104,26 @@ class DetailsInfoScreen extends State<DetailsJobScreen> {
               },
             ),
 
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
 
-            ElevatedButton(onPressed: () =>
-                Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsJobScreen())),
-              child: Text("View Details", style: TextStyle(color: Colors.white),), style: ElevatedButton.styleFrom(backgroundColor: Colors.cyan, shape: BeveledRectangleBorder(borderRadius: BorderRadiusGeometry.circular(2.0))),)
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => DetailScreen(
+                    details: Details(
+                      _contText,
+                      _ios,
+                      _android,
+                      _flutter,
+                      _isRemote,
+                      _currentRangeValues,
+                    ),
+                  ),
+                ),
+              ),
+              child: Text("Ver Detalles", style: TextStyle(color: Colors.white)), style: ElevatedButton.styleFrom(backgroundColor: Colors.cyan, shape:  BeveledRectangleBorder(borderRadius: BorderRadiusGeometry.circular(2.0))),
+            ),
           ],
         ),
       ),

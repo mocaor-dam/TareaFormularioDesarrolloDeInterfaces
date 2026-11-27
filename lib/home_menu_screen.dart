@@ -12,6 +12,8 @@ class HomeMenuScreen extends StatefulWidget{
 class _HomeScreenState extends State<HomeMenuScreen>{
 
   final _formKey = GlobalKey<FormState>();
+  var _contUsuario;
+  var _contPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,16 @@ class _HomeScreenState extends State<HomeMenuScreen>{
                         labelText: "Username"
                       ),
 
+                      validator: (value) {
+                        if(value == null || value.isEmpty){
+                          return "Este campo es obligatorio";
+                        } else {
+                          setState(() {
+                            value = _contUsuario;
+                          });
+                        }
+                      },
+
                     ),
                   ),
                   Padding(
@@ -47,6 +59,16 @@ class _HomeScreenState extends State<HomeMenuScreen>{
                       decoration: InputDecoration(
                         labelText: "Password"
                       ),
+
+                      validator: (value) {
+                        if(value == null || value.isEmpty){
+                          return "Este campo es obligatorio";
+                        } else {
+                          setState(() {
+                            value = _contPassword;
+                          });
+                        }
+                      },
 
                     ),
                   ),
